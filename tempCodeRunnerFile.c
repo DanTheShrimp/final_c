@@ -1,32 +1,17 @@
-// DD LC RV JD 7th Final Project For CP
-#include <math.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <stdlib.h>
-#include <windows.h>
-
-// Fernando, print questions and if statements 
-
-// Lindon(london), fuctions and fix errors and do loops
-
-// Daniel, print plays and figure out how to put symbols in squares
-
-// Jesus cristo, variables, and helps with spelling(emotional support)
-
- // Lindon
 char board(void){
     int question;
     for(int i = 1; i < 4; i++){
         printf("    |    |    \n");
         printf("    |    |    \n");
         printf("----|----|----\n");
-    }
-    while(TRUE){
-        printf("Where would you like to go? Column number then Row number.\n");
-        scanf("%d", &question);
-        if (question == 1){
+        while(TRUE){
+            printf("Where would you like to go? Column number then Row number.\n");
+            scanf("%d", &question);
+            if (question == 1){
+                
+            }
         }
+        
     }
 }
 
@@ -60,8 +45,8 @@ int main(void){
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
-    }
-    return 0;
+}
+    
 }
 
 
