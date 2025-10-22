@@ -1,4 +1,6 @@
-// DD LC RV JD 7th Final Project For CP
+// DD, LC, RV & JD 7th Final Project, Tic tac Toe
+
+
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -6,46 +8,56 @@
 #include <stdlib.h>
 #include <windows.h>
 
-// Fernando, print questions and if statements 
 
-// Lindon(london), fuctions and fix errors and do loops
+// Fernando, print questions and emotional support
 
-// Daniel, print plays and figure out how to put symbols in squares
+// Lindon, make board and double check/ fix bugs
 
-// Jesus cristo, variables, and helps with spelling(emotional support)
+// Daniel, print plays and figure out how to put symbols in squares computer turns
 
- // Lindon
+// Jesus, win conditions, if staments
+
 char board(void){
-    int question;
-    for(int i = 1; i < 4; i++){
-        printf("    |    |    \n");
-        printf("    |    |    \n");
-        printf("----|----|----\n");
-    }
-    while(TRUE){
-        printf("Where would you like to go? Column number then Row number.\n");
-        scanf("%d", &question);
-        if (question == 1){
-        }
-    }
+    char board1[50] = {
+        "   |   |   \n"
+        "   |   |   "
+    };
+    char board2[50] = {
+        "   |   |   \n"
+        "   |   |   "
+    };
+    char board3[50] = {
+        "   |   |   \n"
+        "   |   |   "
+    };
+    char divider[50] = {
+        "-----------"
+    };
+    printf("%s\n%s\n%s\n%s\n%s\n", board1, divider, board2, divider, board3);
 }
 
 
 
 int main(void){
+    char board[3][3]={{' ',' ',' '},
+                {' ',' ',' '},
+                {' ',' ',' '}};
     int player1 = 0;
-    int player2 = 0;
-    
-    board();
+    char player[2];
+    int computer = 0;
+    int move1;
+    int move2;
+    printf("-----Tick Tack Toe-----\n");
+    printf("Hello, what are your initials (Two letters): \n");
+    scanf("%s", &player);
+    printf("Which row would you like to go? \n");
+    scanf("%s", &move1);
+    printf("Which column would you like to go? \n");
+    scanf("%s", &move2);
+    board[move1][move2]={{' ',' ',' '},
+                {' ',' ',' '},
+                {' ',' ',' '}};
     srand(time(NULL));
-    // Lindon
-    char x_symbol[50] = 
-    "\\ /\n";
-    "/ \\\n";
-    char o_symbol[50] = 
-    "/\\\n";
-    "\\/\n";
-
     if (player1 == 1){
         printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
         printf("|                                   |\n");
@@ -53,18 +65,31 @@ int main(void){
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
-        printf("|           Player 1 wins!          |\n");
+        printf("|              %s wins!             |\n", player);
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+
+    }else if (computer == 1){
+        printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|           Computer wins!          |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+
     }
+
+    
     return 0;
 }
-
-
-
-// If(player = X);
-// else if (player = O);
