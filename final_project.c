@@ -9,56 +9,53 @@
 #include <windows.h>
 
 
-// Fernando, print questions and emotional support
+// Fernando, print questions and variables
 
 // Lindon, make board and double check/ fix bugs
 
 // Daniel, print plays and figure out how to put symbols in squares computer turns
 
 // Jesus, win conditions, if staments
+int computerturn(void){
+    srand(time(NULL));
+    int compturn1 = rand() % 3 + 1;
+    int compturn2 = rand() % 3 + 1;
 
-char board(void){
-    char board1[50] = {
-        "   |   |   \n"
-        "   |   |   "
-    };
-    char board2[50] = {
-        "   |   |   \n"
-        "   |   |   "
-    };
-    char board3[50] = {
-        "   |   |   \n"
-        "   |   |   "
-    };
-    char divider[50] = {
-        "-----------"
-    };
-    printf("%s\n%s\n%s\n%s\n%s\n", board1, divider, board2, divider, board3);
+    return 0;
 }
-
-
-
-int main(void){
+int playerturn(void){
     char board[3][3]={{' ',' ',' '},
                 {' ',' ',' '},
                 {' ',' ',' '}};
-    int player1 = 0;
-    char player[2];
-    int computer = 0;
     int move1;
     int move2;
+    while (TRUE){
+        printf("Which row would you like to go (BTW you are X) \n");
+        scanf("%d", &move1);
+        printf("Which column would you like to go (BTW you are X) \n");
+        scanf("%d", &move2);
+        if (board[move1][move2] == ' '){
+            board[move1][move2] = 'X';
+            printf(" %c|%c|%c\n", board[1][1], board[1][2], board[1][3]);
+            printf(" %c|%c|%c\n", board[2][1], board[2][2], board[2][3]);
+            printf(" %c|%c|%c\n", board[3][1], board[3][2], board[3][3]);
+            break;
+        }
+        
+    }
+    return 0;
+}
+
+
+int main(void){
+    int player = 0;
+    int computer = 0;
     printf("-----Tick Tack Toe-----\n");
     printf("Hello, what are your initials (Two letters): \n");
     scanf("%s", &player);
-    printf("Which row would you like to go? \n");
-    scanf("%s", &move1);
-    printf("Which column would you like to go? \n");
-    scanf("%s", &move2);
-    board[move1][move2]={{' ',' ',' '},
-                {' ',' ',' '},
-                {' ',' ',' '}};
-    srand(time(NULL));
-    if (player1 == 1){
+    playerturn();
+    
+    if (player == 1){
         printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
