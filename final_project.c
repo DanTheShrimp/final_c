@@ -1,7 +1,5 @@
 // DD, LC, RV & JD 7th Final Project, Tic tac Toe
 
-
-#include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -9,36 +7,60 @@
 #include <windows.h>
 
 
+char board[3][3]={{' ',' ',' '},
+                {' ',' ',' '},
+                {' ',' ',' '}};
+
 // Fernando, print questions and variables
 
 // Lindon, make board and double check/ fix bugs
 
 // Daniel, print plays and figure out how to put symbols in squares computer turns
 
-// Jesus, win conditions, if staments
+// Jesus, win conditions, if staments, check speling
+
+
 int computerturn(void){
     srand(time(NULL));
-    int compturn1 = rand() % 3 + 1;
-    int compturn2 = rand() % 3 + 1;
-
+    int compturn1 = rand() % 3;
+    int compturn2 = rand() % 3;
+    printf("The computer will go now. Please wait \n");
+    Sleep(1000);
+    while (TRUE){
+        if (board[compturn1][compturn2] == ' '){
+            board[compturn1][compturn2] = 'O';
+            printf(" %c|%c|%c\n", board[0][0], board[0][1], board[0][2]);
+            printf("--|-|--\n");
+            printf(" %c|%c|%c\n", board[1][0], board[1][1], board[1][2]);
+            printf("--|-|--\n");;
+            printf(" %c|%c|%c\n", board[2][0], board[2][1], board[2][2]);
+            Sleep(2000);
+            break;
+        }else{
+            int compturn1 = rand() % 3;
+            int compturn2 = rand() % 3;
+            continue;
+        }
+    }
     return 0;
 }
+
 int playerturn(void){
-    char board[3][3]={{' ',' ',' '},
-                {' ',' ',' '},
-                {' ',' ',' '}};
     int move1;
     int move2;
     while (TRUE){
-        printf("Which row would you like to go (BTW you are X) \n");
+        printf("Which row would you like to go (BTW you are X, do 1-3) \n");
         scanf("%d", &move1);
-        printf("Which column would you like to go (BTW you are X) \n");
+        printf("Which column would you like to go (BTW you are X, do 1-3) \n");
         scanf("%d", &move2);
-        if (board[move1][move2] == ' '){
-            board[move1][move2] = 'X';
-            printf(" %c|%c|%c\n", board[1][1], board[1][2], board[1][3]);
-            printf(" %c|%c|%c\n", board[2][1], board[2][2], board[2][3]);
-            printf(" %c|%c|%c\n", board[3][1], board[3][2], board[3][3]);
+        if (board[move1-1][move2-1] == ' '){
+            board[move1-1][move2-1] = 'X';
+            printf(" %c|%c|%c\n", board[0][0], board[0][1], board[0][2]);
+            printf("--|-|--\n");
+            printf(" %c|%c|%c\n", board[1][0], board[1][1], board[1][2]);
+            printf("--|-|--\n");;
+            printf(" %c|%c|%c\n", board[2][0], board[2][1], board[2][2]);
+            Sleep(2000);
             break;
         }
         
@@ -48,13 +70,37 @@ int playerturn(void){
 
 
 int main(void){
+    char playername[2];
     int player = 0;
     int computer = 0;
     printf("-----Tick Tack Toe-----\n");
     printf("Hello, what are your initials (Two letters): \n");
-    scanf("%s", &player);
+    scanf("%s", &playername);
     playerturn();
+    computerturn();
+    playerturn();
+    computerturn();
+    playerturn();
+    if(board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X'){
+        player = 1;
+    }else if(board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X'){
+        player = 1;
+    }else if(board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X'){
+        player = 1;
+    }else if(board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X'){
+        player = 1;
+    }else if(board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X'){
+        player = 1;
+    }else if(board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X'){
+        player = 1;
+    }else if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X'){
+        player = 1;
+    }else if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X'){
+        player = 1;
+    }
     
+    
+
     if (player == 1){
         printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
         printf("|                                   |\n");
@@ -62,7 +108,7 @@ int main(void){
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
-        printf("|              %s wins!             |\n", player);
+        printf("|              %s wins!             |\n", playername);
         printf("|                                   |\n");
         printf("|                                   |\n");
         printf("|                                   |\n");
@@ -85,8 +131,20 @@ int main(void){
         printf("|                                   |\n");
         printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
 
+    } else{
+        printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                Tie                |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|                                   |\n");
+        printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
     }
-
-    
     return 0;
 }
